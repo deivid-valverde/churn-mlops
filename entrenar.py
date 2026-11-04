@@ -15,6 +15,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
 
 SEED = 42
 random.seed(SEED)
@@ -58,7 +59,8 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=SEED, stratify=y
 )
 
-modelo = RandomForestClassifier(n_estimators=150, max_depth=10, random_state=SEED)
+#modelo = RandomForestClassifier(n_estimators=150, max_depth=10, random_state=SEED)
+modelo = XGBClassifier(n_estimators=150, max_depth=6, learning_rate=0.1, random_state=SEED)
 modelo.fit(X_train, y_train)
 acc = accuracy_score(y_test, modelo.predict(X_test))
 print(f"[train] muestras={N}  morosos={y.mean():.1%}  accuracy={acc:.4f}")
