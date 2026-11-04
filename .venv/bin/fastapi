@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/Users/kenjikv/Library/CloudStorage/OneDrive-Personal/Freelance/Maestria/SOE/Maestria en Ciencia de Datos e Inteligencia Artificial/V1E3/Módulo - ML-OPS Y PUESTA EN PRODUCCION/clases/Clase 3/codigo/05_ejercicio_credito/proyecto-base 2/.venv/bin/python3.11" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from fastapi.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

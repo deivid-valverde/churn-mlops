@@ -1,0 +1,22 @@
+[1mdiff --git a/entrenar.py b/entrenar.py[m
+[1mindex 00d73fb..3ebe3f6 100644[m
+[1m--- a/entrenar.py[m
+[1m+++ b/entrenar.py[m
+[36m@@ -15,6 +15,7 @@[m [mimport numpy as np[m
+ from sklearn.ensemble import RandomForestClassifier[m
+ from sklearn.metrics import accuracy_score[m
+ from sklearn.model_selection import train_test_split[m
+[32m+[m[32mfrom xgboost import XGBClassifier[m
+ [m
+ SEED = 42[m
+ random.seed(SEED)[m
+[36m@@ -58,7 +59,8 @@[m [mX_train, X_test, y_train, y_test = train_test_split([m
+     X, y, test_size=0.3, random_state=SEED, stratify=y[m
+ )[m
+ [m
+[31m-modelo = RandomForestClassifier(n_estimators=150, max_depth=10, random_state=SEED)[m
+[32m+[m[32m#modelo = RandomForestClassifier(n_estimators=150, max_depth=10, random_state=SEED)[m
+[32m+[m[32mmodelo = XGBClassifier(n_estimators=150, max_depth=6, learning_rate=0.1, random_state=SEED)[m
+ modelo.fit(X_train, y_train)[m
+ acc = accuracy_score(y_test, modelo.predict(X_test))[m
+ print(f"[train] muestras={N}  morosos={y.mean():.1%}  accuracy={acc:.4f}")[m
